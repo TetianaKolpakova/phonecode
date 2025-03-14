@@ -1,25 +1,131 @@
-.country-phone-options {display: none; position: absolute; width: 280px; max-height: 480px; overflow-y: scroll; margin-top: 20px; z-index: 600; border: 1px solid #ccc;}
-.country-phone-selected {cursor: pointer; background: white; float: left; height: 20px; min-width: 35px; width: auto; padding-left: 20px; background: url('arrow-down.png') no-repeat}
-.country-phone-option {cursor: pointer; background: white; padding: 2px 0;}
-.country-phone-option:hover, .country-phone-option.hovered {background: #77cbff;}
-.country-phone-search {width: 100%; padding: 3px 2px;}
-.country-phone-selected img {float: left; top:2px; position: relative; margin-right: 2px;}
-.country-phone-option span {float: right; color: #999999; min-width: 66px; text-align: right;}
-.country-phone-option:hover span, .country-phone-option.hovered span {color: #000;}
-.country-phone-option span img {margin-left: 3px;}
-.country-phone {border: 1px solid #aaa; padding: 4px;}
-.country-phone-selected {padding: 4px 0 0 20px; font-size: 15px;}
-.country-phone-selected img {margin: 1px 4px 0 0;}
-.country-phone-selected {background-position: 2px 4px;}
-.country-phone-options {width: 298px; margin: 30px 0 0 -5px;}
-.country-phone-option {padding: 4px 2px;}
+/* Variables */
+
+:root {
+    --text-primary: #131313;
+    --text-secondary: #666666;
+    --background-primary: #FFFFFF;
+    --background-secondary: #efefef;
+    --hover: #77cbff;
+    --outline: #cccccc;
+
+
+    --font-size:15px;
+    --border-radius: 8px;
+
+    --space-XS: 2px;
+    --space-S: 4px;
+    --space-M: 8px;
+    --space-L: 12px;
+    --space-XL: 16px;
+    --space-XXL: 24px;
+}
+
+
+.field label {
+    display: block;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-M);
+}
+
+.country-phone {
+    border: 1px solid var(--outline);
+    padding: var(--space-M);
+    position: relative;
+}
+
+.country-phone > input {
+    font-size: var(--font-size);
+    padding: var(--space-S);
+    border: 0;
+    outline: none;
+}
+
+.country-phone-options {
+    display: none;
+    position: absolute;
+    width: 100%;
+    margin: 33px 0 0 -9px;
+    max-height: 480px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 600;
+    border: 1px solid var(--outline);
+    background: var(--background-secondary);
+
+}
+.country-phone-selected {
+    cursor: pointer;
+    float: left;
+    height: var(--space-XXL);
+    min-width: 60px;
+    width: auto;
+    padding-left: var(--space-XXL);
+    background: url('arrow-down.webp') no-repeat;
+    background-position: 0 var(--space-S);
+}
+.country-phone-option {
+    cursor: pointer;
+    background: var(--background-primary);
+    padding: var(--space-XS) 0;
+}
+.country-phone-option:hover, .country-phone-option.hovered {
+    background: var(--hover);
+}
+
+.country-phone-search {
+    width: calc(100% - var(--space-XXL)* 2);
+    padding: var(--space-S) var(--space-M);
+    border: 1px solid var(--outline);
+    border-radius: var(--border-radius);
+    min-height: var(--space-XXL);
+    margin: var(--space-XL) var(--space-XXL);
+}
+
+input.country-phone-search:focus{
+    outline: var(--hover);
+}
+
+.country-phone-selected img {
+    float: left;
+    top:2px;
+    position: relative;
+    margin-right: var(--space-XS);
+}
+.country-phone-option span {
+    min-width: 66px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: calc(var(--space-XL) + var(--space-M) -  var(--space-XS));
+}
+
+.country-phone-option span img {
+    margin-right: var(--space-S);
+}
+.country-phone-selected {
+    padding: var(--space-S) 0 0 var(--space-XL);
+}
+.country-phone-selected img {
+    margin: 1px 4px 0 0;
+}
+.country-phone-option {
+    padding: var(--space-S) var(--space-XS);
+    display: flex;
+    flex-direction: row;
+}
+.country-phone-search-label {
+    position: absolute;
+    margin: calc( -1 * var(--space-XXL) - var(--space-XL) - var(--space-XS)) 0 0 calc(var(--space-XS) +  var(--space-XL) * 2);
+    color: var(--text-secondary);
+    font-size: var(--font-size);
+}
 
 .flag {
     width: 16px;
     height: 11px;
-    background:url('flags.png') no-repeat
+    background:url('flags.webp') no-repeat
 }
-.country-phone-search-label {position: absolute; margin: -20px 0 0 4px; color: #999 !important; font-size: 13px !important;}
 
 .flag.flag-ad {background-position: -16px 0}
 .flag.flag-ae {background-position: -32px 0}

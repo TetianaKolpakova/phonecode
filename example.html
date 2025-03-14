@@ -2,26 +2,26 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Пример виджета выбора телефонного кода страны при вводе номера</title>
+<title>Приклад віджету вибору телефонного коду країни під час введення номера</title>
 <link rel="stylesheet" href="phonecode.css">
 <style>
     body {font-family: arial, helvetica, sans-serif; font-size: 14px; margin: 0; padding: 0;}
-    .form {width: 300px; margin: 20px auto;}
-    .field input {font-size: 14px; padding: 2px; border: 0; outline: none;}
-    .field label {padding: 2px 0; display: block; color: #666;}
-    .code {padding: 30px 0 20px 0;}
-    code {background: #eee; display: block; color: #f50;}
-    .licence {font-size: 12px; color: #555; padding: 30px 0;}
+    .form {width:100%; max-width: 360px; margin: 20px auto;}
+
+    .code {padding: 30px 0 20px 0; margin: 20px 0;}
+    code {background: #efefef; border-radius: 8px; display: block; color: #39a2f3; padding: 20px;}
+    .licence {font-size: 12px; color: #555; padding: 30px 0; text-align: center; line-height: 1.5; }
     .licence a {color: #222;}
 </style>
-<script src="jquery-1.11.0.min.js"></script>
-<script src="jquery-ui-1.10.4.custom.min.js"></script>
-<script src="counties.js"></script>
+<script src="jquery-3.7.1.min.js"></script>
+<script src="jquery-ui.1.14.1.min.js"></script>
+<script src="countries.js"></script>
 <script src="phonecode.js"></script>
 <script>
     $(function(){
         $('#phone').phonecode({
-            preferCo: 'ru'
+            preferCo: 'ua',
+            language: 'uk'
         });
     });
 </script>
@@ -30,27 +30,30 @@
 <div class="container">
     <div class="form">
         <div class="field">
-            <label for="phone">Ваш телефон:</label>
-            <input type="text" id="phone" name="phone" autofocus="true" placeholder="9990000000">
+            <label for="phone">Номер телефону:</label>
+            <input type="text" id="phone" name="phone" autofocus="true" placeholder="1234566789">
         </div>
         <div class="code">
-            Инициализация виджета:
-            <pre><code>
-    $('#phone').phonecode({
-        preferCo: 'ru'
-    });
-            </code></pre>
+            Ініціалізація віджету:
+            <pre>
+<code>
+$('#phone').phonecode({
+    preferCo: 'ua',
+    language: 'uk'
+});
+</code>
+            </pre>
         </div>
         <div class="info">
-            <a href="http://jakulov.ru/blog/2014/phonecode_widget">Статья про разработку виджета</a>
-            <br>
-            <br>
-            <a href="https://github.com/jakulov/phonecode">Скачать на Github</a>
+
+            <a href="https://github.com/TetianaKolpakova/phonecode">Проєкт на  Github</a>
 
         </div>
-        <Div class="licence">
-            &copy; 2014 MIT Licence Yakov Akulov <a href="http://jakulov.ru">jakulov.ru</a>
-        </Div>
+        <div class="licence">
+            &copy; 2014 MIT License Yakov Akulov <a href="http://jakulov.ru" rel="nofollow">jakulov.ru</a><br>
+            Modified by &copy; 2025 <a href="https://tetiana.pro/">Tetiana Kolpakova</a>
+        </div>
+
     </div>
 </div>
 </body>

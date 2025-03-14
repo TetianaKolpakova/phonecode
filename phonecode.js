@@ -1,10 +1,14 @@
 var countryCache;
 var countryRequesting = false;
+
 /**
- * @author Yakov Akulov
- * @email jakulov@gmail.com
- * @line jakuov.ru
+ * Forked from Yakov Akulov's phonecode.js (MIT License, 2014)
+ * Original author: Yakov Akulov (jakulov@gmail.com)
+ * Modified by: Tetiana Kolpakova
+ *
+ * Licensed under the MIT License.
  */
+
 (function($) {
     $.widget('custom.phonecode', {
         data: [],
@@ -16,7 +20,8 @@ var countryRequesting = false;
         options: {
             default_prefix: '',
             prefix: '',
-            preferCo: 'росси'
+            preferCo: 'us',
+            language: 'en'
         },
         _create: function() {
             this._loadData();
@@ -70,7 +75,11 @@ var countryRequesting = false;
             var self = this;
             var searchInput = $('<input type="text" class="country-phone-search" value="">');
             $(searchInput).appendTo(options);
-            var searchLabel = $('<label class="country-phone-search-label">Введите страну</label>');
+
+            var LocalLabel = this.options.language === 'uk' ? "Пошук" : "Search";
+
+            var searchLabel = $('<label class="country-phone-search-label">' + LocalLabel + '</label>');
+
             $(searchLabel).on('click',function(){
                 $(this).hide();
                 $(searchInput).focus();
@@ -126,11 +135,15 @@ var countryRequesting = false;
                 var country = this.data[i];
                 var prefCountry = country.co;
 
+                // Choose the country name based on the localisation option
+                var countryName = this.options.language === 'uk' ? country.uk : country.en;
+
+
                 var option = $('<div data-phone="'+
                     country.ph + '" data-co="'+ prefCountry.toLowerCase() +'"' +
                     ' class="country-phone-option"><span>+'+ country.ph +'<img src="blank.gif" class="flag flag-'+
                     country.co +
-                    '"></span>'+ country.na +'</div>'
+                    '"></span>'+ countryName +'</div>'
                 );
                 $(option).appendTo(options);
                 if(this.options.preferCo && (this.options.preferCo != undefined)) {
@@ -232,9 +245,6 @@ var countryRequesting = false;
             var self = this;
             $(options).find('.country-phone-option').each(function(){
                 if(text) {
-                    if(text == 'россия') {
-                        text = 'росси';
-                    }
                     var match = $(this).text().toLowerCase();
                     if(match.indexOf(text) >= 0) {
                         $(this).show();
